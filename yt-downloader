@@ -89,3 +89,42 @@ frame1.place(x=20 , y = 200, width = 540 , height = 250)
 
 video_title = Label(frame1, text = 'Video Title Here' ,font = ('calibri',10), bg = 'lightblue' , anchor = 'w' )
 video_title.place(x=5)
+
+video_image  = Label(frame1 , bg = 'lightgrey', bd=2 , relief = RIDGE)
+video_image.place(x=10 , y = 40 , height=200 , width = 200 ) 
+
+video_desc = Label(frame1, text = 'Description' ,font = ('calibri',15), bg = 'orange' , anchor = 'w' )
+video_desc.place(x= 300 , y = 20)
+ 
+desc = Text(frame1, font = ('calibri',10), bg = 'lightyellow' )
+desc.place(x= 230 , y = 60 ,height = 500 , width = 300 ) 
+
+size = Label(root , text = "Total Size :  MB" ,font = ('helvatica',10) , bg = 'lightgrey')
+size.place(x = 30 , y = 470)
+
+downloading = Label(root , text = "Downloading : 0%" ,font = ('helvatica',10))
+downloading.place(x = 30 , y = 510)
+
+
+
+def dwn():
+    url = link.get()
+    yt = YouTube(url)
+    print(qua.get())
+    yt.streams.filter(adaptive = True).first().download()
+
+download = Button(root , text = "  Download  " ,command = dwn ,font = ('helvatica',10) ,fg = 'white' , bg= 'blue')
+download.place(x=350 , y = 470)
+
+clear = Button(root , text = "  Clear  " ,font = ('helvatica',10) ,fg = 'white' , bg= 'blue')
+clear.place(x=450 , y = 470)
+
+#  progress bar
+
+progess = ttk.Progressbar(root , orient = HORIZONTAL , length = 500 , mode = "determinate")
+progess.place(x = 30 , y = 540)
+
+
+
+
+root.mainloop()
